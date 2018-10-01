@@ -3,11 +3,10 @@ package terning;
 public class Dice {
 	// roll the die and return the value (1-6)
 	public int roll() {
-		float d1=(float)Math.random();     // 0-1
-		float d2=d1*5;                     // 0-5
-		int d3=Math.round(d2);             // 0-5 integer
-		return d3 + 1;                     // 1-6		
-	}
+		//Math Random returns in the interval [0,1[
+		int number = (int)(Math.random()*6);
+		return number+1;
+			}
 
 	//Testkommentar
 	// hej
