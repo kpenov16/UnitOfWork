@@ -11,6 +11,7 @@ public class Dice {
 
 	//Testkommentar
 	// hej
+	// heeeee
 
 	// roll the die n times and print the values
 	public void rollMultiple(int n) {
