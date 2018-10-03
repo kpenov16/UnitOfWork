@@ -3,21 +3,37 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import terning.Dice;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class DiceTest {
-
+/*
+* Lav en JUnit test i IntelliJ der tester terningen.
+* Den skal teste at terningen ikke kan give andre værdier end 1-6,
+* samt at alle seks værdier forekommer lige hyppigt indenfor en passende fejlmargin.
+* For eksempel:
+* - hvis I kaster terningen 60000 gange skal hver værdi forekomme ca. 10000 gange ± 400.
+* Tilføj JUnit test filerne til jeres repository på github.
+* Lav en Branch med navnet BugFixes i jeres repository.
+* Ret de fejl I har fundet i terning-programmet og læg dem i BugFixes vha. Commit.
+* Lav en Pull Request der anmoder om at indsætte rettelserne i jeres master branch.
+* */
     public static final String STR_ONE = "1";
     public static final int DEVIATION = 400;
     public static final int BASE_EXPECTED_OCCURRANCES = 12_000;
     private static final String STR_TWO = "2";
+    private Dice dice;
+    private int numberOfRolls;
 
     @BeforeEach
     void setUp() {
-        //test
+        dice = new Dice();
+        numberOfRolls = 60_000;
     }
 
     @AfterEach
@@ -25,11 +41,39 @@ class DiceTest {
     }
 
     @Test
+    public void givenCertainNumberOfRolls_returnOnlyValidNumbersOccurre(){
+        assertTrue( eachRollIsValidNumber( numberOfRolls, "1,2,3,4,5,6" ) );
+    }
+
+    private boolean eachRollIsValidNumber(int numberOfRolls, String strValidNumbers) {
+        List<String> validNumbers = new ArrayList<>( Arrays.asList(strValidNumbers.split("\\s*,\\s*")) );
+        boolean allRollsValid = true;
+        for(int i = 0; i < numberOfRolls; i++){
+            String currentRoll = String.valueOf( dice.roll() );
+            if(!isCurrentRollFound(validNumbers, currentRoll)){
+                allRollsValid = false;
+                break;
+            }
+        }
+        return allRollsValid;
+    }
+
+    private boolean isCurrentRollFound(List<String> validNumbers, String currentRoll) {
+        boolean currentRollFound = false;
+        for(String num : validNumbers){
+            if(num.equals(currentRoll)){
+                currentRollFound = true;
+                break;
+            }
+        }
+        return currentRollFound;
+    }
+
+    @Test
     public void given60000Rolls_returnAbout10000TimesPerSide(){
-        Dice dice = new Dice();
+
         String allRolls = "";
-        int n = 60000;
-        for(int i = 0; i < n; i++){
+        for(int i = 0; i < numberOfRolls; i++){
             allRolls += dice.roll();
         }
 
