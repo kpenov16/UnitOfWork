@@ -1,21 +1,21 @@
 package terning;
 
+import java.util.Random;
+
 public class Dice {
-	// roll the die and return the value (1-6)
-	public int roll() {
-		float d1=(float)Math.random();     // 0-1
-		float d2=d1*5;                     // 0-5
-		int d3=Math.round(d2);             // 0-5 integer
-		return d3 + 1;                     // 1-6		
-	}
-
-	//Testkommentar
-	// hej
-
-	// roll the die n times and print the values
-	public void rollMultiple(int n) {
-		for (int i=1; i<=n; i++) {
-			System.out.print(roll() + " ");
-		}		
-	}
+    // roll the die and return the value (1-6)
+    public int roll() {
+        Random r = new Random();
+        int Low = 1;
+        int High = 7;
+        // Rolls random number between 0 and 7
+        int Result = r.nextInt(6) + 1;
+        return Result;
+    }
+    // roll the die n times and print the values
+    public void rollMultiple(int n) {
+        for (int i=1; i<=n; i++) {
+            System.out.print(roll() + " ");
+        }
+    }
 }
