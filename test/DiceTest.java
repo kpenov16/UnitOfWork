@@ -33,7 +33,6 @@ class DiceTest {
     private static final String STR_TWO = "2";
     public static final String STR_ONE = "1";
     //private static String DICE_SIDES = "1,2,3,4,5,6";
-
     private Dice dice;
 
     @BeforeEach
