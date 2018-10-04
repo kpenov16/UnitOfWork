@@ -41,7 +41,7 @@ class DiceTest {
     }
 
     @Test
-    public void givenCertainNumberOfRolls_returnOnlyValidNumbersOccurre(){
+    public void givenCertainNumberOfRolls_returnOnlyValidNumbersOccurrence(){
         assertTrue( eachRollIsValidNumber( numberOfRolls, "1,2,3,4,5,6" ) );
     }
 
