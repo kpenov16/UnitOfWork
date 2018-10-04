@@ -23,7 +23,7 @@ class DiceTest {
 * Ret de fejl I har fundet i terning-programmet og læg dem i BugFixes vha. Commit.
 * Lav en Pull Request der anmoder om at indsætte rettelserne i jeres master branch.
 * */
-
+    //
     private static final int NUMBER_OF_ROLLS = 60_000;
     private static final double FRAC_DIVIATION = 0.2;
     private static int NUMBER_DICE_SIDES = 6;
